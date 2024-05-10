@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 
 
-const FoodCard = ({food}) => {
-    const {name, image, category, price, quantity} = food;
+const FoodCard = ({ food }) => {
+    const navigate = useNavigate()
+    const {_id, name, image, category, price, quantity} = food;
+
+    const viewDetails = () => {
+        navigate(`/single-food/${_id}`); 
+    };
+    
     return (
     
     <div className="bg-black shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"> {/* Card container */}
@@ -19,7 +26,7 @@ const FoodCard = ({food}) => {
             </div>
 
             <div className="p-4 flex justify-end"> {/* Section for the "Details" button */}
-                <button className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Button with hover effect */}
+                <button onClick={viewDetails} className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Button with hover effect */}
                     Details
                 </button>
             </div>
