@@ -12,13 +12,6 @@ const firebaseConfig = {
   messagingSenderId:import.meta.env.VITE_messagingSenderId,
   appId:import.meta.env.VITE_appId,
 };
-// VITE_apiKey=AIzaSyDBelfWwURuMS5-G0tvg1iVYGaeTZ-U9NY
-// VITE_authDomain=restaurant-management-55f52.firebaseapp.com
-// VITE_projectId=restaurant-management-55f52
-// VITE_storageBucket=restaurant-management-55f52.appspot.com
-// VITE_messagingSenderId=697435828781
-// VITE_appId=1:697435828781:web:a1a9685d23150cfbbdfea4
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export default app;
