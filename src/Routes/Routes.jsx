@@ -7,6 +7,7 @@ import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import MyAddedFood from "../Pages/MyAddedFood";
+import AddFoodItem from "../Pages/AddFoodItem";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       path: "/my-added-foods",
       element: <MyAddedFood></MyAddedFood>,
   },
+  {
+    path: "/add-food",
+    element: <AddFoodItem></AddFoodItem>,
+},
       ]
     },
   ]);
