@@ -10,8 +10,9 @@ const firebaseConfig = {
   projectId:import.meta.env.VITE_projectId,
   storageBucket:import.meta.env.VITE_storageBucket,
   messagingSenderId:import.meta.env.VITE_messagingSenderId,
-  appId:import.meta.env.VITE_appId,
+  appId:import.meta.env.VITE_appId
 };
 
 const app = initializeApp(firebaseConfig);
 export default app;
+// export const app = initializeApp(firebaseConfig)

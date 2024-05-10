@@ -1,9 +1,59 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Helmet } from "react-helmet";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
+    const navigate = useNavigate()
+    const {  createUser, updateUserProfile, user, setUser,logOut } = useContext(AuthContext);
+    const isPasswordValid = (password) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasMinLength = password.length >= 6;
+    
+        return hasUpperCase && hasLowerCase && hasMinLength;
+      };
+
+
+    const handleSignUp = async e => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const name = form.name.value
+        const photo = form.photo.value
+        const pass = form.password.value
+        console.log({ email, pass, name, photo })
+        if (!isPasswordValid(pass)) {
+            toast.error(
+              "Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
+            );
+            return;
+          }
+        try {
+          //2. User Registration
+          const result = await createUser(email, pass)
+          console.log(result)
+          
+          await updateUserProfile(name, photo)
+          setUser({ ...user, photoURL: photo, displayName: name })
+          logOut()
+          navigate('/')
+        //   logOut()
+          toast.success('Signup Successful')
+        } catch (err) {
+          console.log(err)
+          toast.error(err?.message)
+        }
+      }
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+       <div>
+          <Helmet>
+          
+          <title>Dish & dine | Register </title>
+        </Helmet>
+         <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-black rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
         <div
           className="hidden lg:block lg:w-1/2 bg-cover"
@@ -26,7 +76,7 @@ const Register = () => {
             Sign Up!
           </p>
 
-       <form >
+       <form onSubmit={handleSignUp} >
             <div className='mt-4'>
               <label
                 className='block mb-2 text-sm font-medium text-yellow-400 '
@@ -123,6 +173,7 @@ const Register = () => {
         
       </div>
     </div>
+       </div>
     );
 };
 

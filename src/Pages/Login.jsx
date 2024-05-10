@@ -1,9 +1,52 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 
 const Login = () => {
+    const navigate = useNavigate()
+    const { signIn, signInWithGoogle} = useContext(AuthContext);
+
+    // google sign in
+    const handleGoogleSignIn = async() =>{
+        try {
+            await signInWithGoogle()
+            toast.success('Signin Successful')
+            navigate('/')
+          } catch (err) {
+            console.log(err)
+            toast.error(err?.message)
+          }
+
+    }
+    // email sign in
+    const handleSignIn = async e => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const pass = form.password.value
+        console.log({ email, pass })
+        try {
+          //User Login
+          const result = await signIn(email, pass)
+          console.log(result)
+          navigate('/')
+          toast.success('Signin Successful')
+        } catch (err) {
+          console.log(err)
+          toast.error(err?.message)
+        }
+      }
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    
+    <div>
+         <Helmet>
+          
+          <title>Dish & dine | Login </title>
+        </Helmet>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-black rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
         <div
           className="hidden lg:block lg:w-1/2 bg-cover"
@@ -72,7 +115,7 @@ const Login = () => {
               Sign In
             </button>
           </div> */}
-           <form>
+           <form onSubmit={handleSignIn}>
             <div className='mt-4'>
               <label
                 className='block mb-2 text-sm font-medium text-yellow-400 '
@@ -165,7 +208,7 @@ const Login = () => {
             </span>
             
           </a> */}
-            <div
+            <div onClick={handleGoogleSignIn}
           
             className='flex cursor-pointer items-center justify-center bg-white mt-4 text-black transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
           >
@@ -207,6 +250,7 @@ const Login = () => {
         </div>
         
       </div>
+    </div>
     </div>
   );
 };
