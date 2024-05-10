@@ -1,16 +1,16 @@
 import { Helmet } from "react-helmet";
 
 
-const AllFoods = () => {
+const MyAddedFood = () => {
     return (
         <div>
              <Helmet>
           
-          <title>Dish & dine | All Food </title>
+          <title>Dish & dine | My Added Food </title>
         </Helmet>
-            <h2>all food</h2>
+        <h2>my added</h2>
         </div>
     );
 };
 
-export default AllFoods;
+export default MyAddedFood;

@@ -34,7 +34,23 @@ const Register = () => {
         try {
           //2. User Registration
           const result = await createUser(email, pass)
-          console.log(result)
+          const user = {email, name};
+          fetch('http://localhost:5000/user',{
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+          })
+          .then(res => res.json())
+          .then(data =>{
+            if(data.insertedId){
+              console.log('user added to Database');
+            }
+          })
+
+          console.log(result);
+         
           
           await updateUserProfile(name, photo)
           setUser({ ...user, photoURL: photo, displayName: name })
