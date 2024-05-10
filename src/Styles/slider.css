@@ -1,31 +1,4 @@
-/* .slide {
-    color: blue;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 
-
-   
-}
-
-  
-  .slide1 {
-      background-image: url("https://i.ibb.co/x1ymzrY/deshie.jpg");
-  }
-  .slide2 {
-      background-image: url("https://i.ibb.co/G0rqtvc/sweeture.jpg");
-  }
-  .slide3 {
-      background-image: url("https://i.ibb.co/1X7HY3v/itature.jpg");
-  }
-  .slide4 {
-      background-image: url("https://i.ibb.co/yB3kvBg/vegetable-ratatouille-frying-pan-wooden-table.jpg");
-  } 
-    */
 
     .slide {
         color: blue;
@@ -37,6 +10,10 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+
+      
+        
+
       }
       
       .text-content {
@@ -44,7 +21,9 @@
         width: 100%;
         background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background for readability */
         padding: 20px; /* Padding around the text */
-        border-radius: 10px; /* Rounded corners for aesthetics */
+        border-radius: 10px;
+
+         /* Rounded corners for aesthetics */
       }
       
       .slide1 {
