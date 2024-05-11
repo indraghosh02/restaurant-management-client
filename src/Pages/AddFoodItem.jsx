@@ -55,7 +55,7 @@ const AddFoodItem = () => {
             
 
 
-            <div className="bg-yellow-400 p-24  ">
+            <div className="bg-gradient-to-r from-yellow-400 to-slate-500 p-24  ">
              <h3 className='text-4xl text-center text-black font-bold mb-4 font-serif'> Add Food Items</h3>
              <form onSubmit={handleAddFood}  >
 

@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import MyAddedFood from "../Pages/MyAddedFood";
 import AddFoodItem from "../Pages/AddFoodItem";
 import SingleFoodPage from "../Pages/SingleFoodPage";
+import UpdateFood from "../Pages/UpdateFood";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
         {
             path: "/gallery",
             element: <Gallery></Gallery>,
+            // loader: () => fetch('http://localhost:5000/image')
         },
         {
           path: "/login",
@@ -50,6 +52,11 @@ const router = createBrowserRouter([
   {
     path: "/add-food",
     element: <AddFoodItem></AddFoodItem>,
+},
+{
+  path: "/update-food/:id",
+  element: <UpdateFood></UpdateFood>,
+  loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
 },
       ]
     },

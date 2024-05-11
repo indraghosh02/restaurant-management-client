@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -14,6 +15,11 @@ const SingleFoodPage = () => {
     
 
             <div className="max-w-4xl bg-yellow-400 mx-auto p-8"> {/* Container with some padding */}
+               <Helmet>
+          
+                    <title>Dish & Dine | Single Food </title>
+                  </Helmet>
+                     
                 <div className="bg-black shadow-lg rounded-lg overflow-hidden"> {/* Card style for displaying food details */}
                     <img
                         src={image}
