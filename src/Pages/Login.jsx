@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
@@ -7,7 +7,26 @@ import { Helmet } from "react-helmet";
 
 const Login = () => {
     const navigate = useNavigate()
+    const location = useLocation()
+   
+
+    console.log(location);
+    const position = location?.state || "/";
     const { signIn, signInWithGoogle} = useContext(AuthContext);
+
+    const handleLogin = loginProvider => {
+      loginProvider()
+      .then(result => {
+        
+          // if(result.user){
+          //   navigate(position);
+    
+          // }
+          navigate(position)
+
+      })
+
+    }
 
     // google sign in
     const handleGoogleSignIn = async() =>{
@@ -31,8 +50,14 @@ const Login = () => {
         try {
           //User Login
           const result = await signIn(email, pass)
+          .then(result => {
+        
+          
+            navigate(position)
+  
+        })
           console.log(result)
-          navigate('/')
+          // navigate('/')
           toast.success('Signin Successful')
         } catch (err) {
           console.log(err)
@@ -68,7 +93,7 @@ const Login = () => {
           <p className="mt-3 text-3xl font-extrabold text-center text-yellow-400 dark:text-gray-200">
             Log in!
           </p>
-           <form onSubmit={handleSignIn}>
+           <form onSubmit= {handleSignIn}>
             <div className='mt-4'>
               <label
                 className='block mb-2 text-sm font-medium text-yellow-400 '
@@ -126,8 +151,8 @@ const Login = () => {
             </a>
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
           </div>
-          
-            <div onClick={handleGoogleSignIn}
+          {/* onClick={handleGoogleSignIn} */}
+            <div onClick={() =>handleLogin(handleGoogleSignIn)}
           
             className='flex cursor-pointer items-center justify-center bg-white mt-4 text-black transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
           >

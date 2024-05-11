@@ -10,6 +10,7 @@ import MyAddedFood from "../Pages/MyAddedFood";
 import AddFoodItem from "../Pages/AddFoodItem";
 import SingleFoodPage from "../Pages/SingleFoodPage";
 import UpdateFood from "../Pages/UpdateFood";
+import PrivateRoute from "../Components/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
         },
         {
             path: "/all-foods",
-            element: <AllFoods></AllFoods>,
+            element:<AllFoods></AllFoods>,
             loader: () => fetch('http://localhost:5000/food')
         },
          {
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
            },
         {
             path: "/gallery",
-            element: <Gallery></Gallery>,
-            // loader: () => fetch('http://localhost:5000/image')
+            element:  <Gallery></Gallery>,
+          
         },
         {
           path: "/login",
@@ -47,11 +48,11 @@ const router = createBrowserRouter([
     },
     {
       path: "/my-added-foods",
-      element: <MyAddedFood></MyAddedFood>,
+      element: <PrivateRoute> <MyAddedFood></MyAddedFood> </PrivateRoute>,
   },
   {
     path: "/add-food",
-    element: <AddFoodItem></AddFoodItem>,
+    element: <PrivateRoute> <AddFoodItem></AddFoodItem></PrivateRoute>,
 },
 {
   path: "/update-food/:id",
