@@ -36,6 +36,7 @@ const router = createBrowserRouter([
         {
             path: "/gallery",
             element:  <Gallery></Gallery>,
+            loader: () => fetch('http://localhost:5000/image')
           
         },
         {
