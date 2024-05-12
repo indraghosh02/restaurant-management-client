@@ -38,13 +38,30 @@ const SingleFoodPage = () => {
                         <p className="text-white mb-4">{description}</p>
                         {/* <p className="text-white mb-4">{_id}</p>  */}
                         
-                        
-                       <Link to={`/food-purchase/${_id}`}>
-                       <button className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Purchase button */}
+
+                        {
+                            quantity > 0 ? (
+                                <Link to={`/food-purchase/${_id}`}>
+                                <button className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Purchase button */}
+                                     Purchase
+                                 </button>
+                                 
+                                </Link>
+                            ):
+                            (
+                                <div>
+                                     <Link to={`/food-purchase/${_id}`}>
+                       <button className="bg-red-800 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200" disabled> {/* Purchase button */}
                             Purchase
                         </button>
+                        <p className="text-red-800 font-bold">Not Available for purchase</p>
                         
                        </Link>
+                                </div>
+                            )
+                        }
+                        
+                      
                     </div>
                 </div>
             </div>
