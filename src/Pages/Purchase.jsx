@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const loadedFood = useLoaderData();
+    console.log(loadedFood);
     const { user, loading } = useContext(AuthContext);
 
     const [formData, setFormData] = useState({
@@ -55,7 +56,9 @@ const Purchase = () => {
         body: JSON.stringify({
             ...formData,
             foodId: loadedFood._id 
+      
         })
+      
     })
     .then(res => res.json())
     .then(data => {
@@ -72,6 +75,7 @@ const Purchase = () => {
     console.log(formData);
       
     };
+    console.log(loadedFood)
 
     return (
         <div>
@@ -79,7 +83,7 @@ const Purchase = () => {
                 <title>Purchase Food</title>
             </Helmet>
             <div className="container mx-auto bg-yellow-400">
-                <h1 className="text-3xl font-bold text-center mb-4 text-orange-500 font-tittle">Purchase Food</h1>
+                <h1 className="text-3xl font-bold text-center mb-4 text-black font-serif pt-10">Purchase Food</h1>
                 <div className='flex justify-center'>
                 <img className="h-36 w-auto mb-4" src={loadedFood.image} alt={loadedFood.foodName} />
 
@@ -115,7 +119,7 @@ const Purchase = () => {
                         <label htmlFor="buyingDate" className="block text-sm font-medium text-gray-700">Buying Date</label>
                         <input type="text" id="buyingDate" name="buyingDate" value={formData.buyingDate} className="mt-1 p-2 w-full border rounded-md focus:outline-none" readOnly />
                     </div>
-                    <button type="submit" className="bg-orange-500 text-white py-2 px-4 rounded-md w-full hover:bg-yellow-600 focus:outline-none focus:bg-blue-600 mb-10">Purchase</button>
+                    <button type="submit" className="bg-black text-white py-2 px-4 rounded-md w-full hover:bg-yellow-600 focus:outline-none focus:bg-blue-600 mb-10">Purchase</button>
                 </form>
             </div>
         </div>

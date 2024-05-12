@@ -18,7 +18,7 @@ const Home = () => {
 
         <Chef></Chef>
 
-        <div className="flex justify-center items-center bg-black py-8">
+        <div className="flex justify-center items-center bg-black py-8 ">
   <div className="container mx-auto flex flex-col md:flex-row">
     {/* Image on the left */}
     <div className="md:w-1/2">

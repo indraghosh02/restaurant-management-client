@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyPurchasePage = () => {
     const { user } = useContext(AuthContext);
@@ -14,9 +15,33 @@ const MyPurchasePage = () => {
         }
     }, [user]);
 
-    // const handleDelete = (id) => {
-    //     // Implement delete logic here
-    // };
+    const handleDelete = _id => {
+        console.log(_id);
+        Swal.fire({
+          title: "Are you sure to Delete?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, delete it!",
+          cancelButtonText: "No, keep it",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`http://localhost:5000/my-purchases/${_id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.deletedCount > 0) {
+                    setPurchasedFoods((prevPurchase) =>
+                        prevPurchase.filter((purchase) => purchase._id !== _id)
+                  ); // Update the state to remove the deleted craft
+                  Swal.fire("Deleted!", "Your craft has been deleted.", "success");
+                }
+              });
+           
+          }
+        });
+      };
 
     return (
         <div>
@@ -29,7 +54,7 @@ const MyPurchasePage = () => {
 
                     <div key={food._id} className="  bg-black shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"> {/* Card container */}
                     <img
-                        src={food.image} /* Food image at the top */
+                        src={food.image} 
                         alt={food.name}
                         className="w-full h-40 object-cover"
                     />
@@ -46,7 +71,7 @@ const MyPurchasePage = () => {
     
                     <div className="p-4 grid grid-cols-1 justify-end gap-4"> {/* Section for the "Details" button */}
                         
-                        <button  className="bg-red-800 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Button with hover effect */}
+                        <button onClick={() => handleDelete(food._id)} className="bg-red-800 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Button with hover effect */}
                             Delete
                         </button>
                     </div>
@@ -66,14 +91,4 @@ export default MyPurchasePage;
 
 
 
-  // <div key={food._id} className="card">
-                //     <img src={food.image} alt={food.name} />
-                //     <div>
-                //         <h2>{food.name}</h2>
-                //         <p>Price: ${food.price}</p>
-                //         <p>Added Time: {food.buyingDate}</p>
-                //         <p>Food Owner: {food.buyerName}</p>
-                //         {/* <button onClick={() => handleDelete(food._id)}>Delete</button> */}
-                //         <button onClick={() => handleDelete(food._id)}>Delete</button>
-                //     </div>
-                // </div>
+

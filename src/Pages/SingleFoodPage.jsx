@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
-import FoodPurchase from "./FoodPurchase";
+
 
 
 const SingleFoodPage = () => {
@@ -28,15 +28,15 @@ const SingleFoodPage = () => {
                         className="w-full h-60 object-cover"
                     />
                     <div className="p-6">
-                        <h1 className="text-4xl font-bold text-yellow-400 font-serif mb-4">{name}</h1> {/* Food name */}
-                        <p className=" mb-2 text-white">Category: {category}</p> {/* Category */}
-                        <p className="text-white mb-2">Price: ${price}</p> {/* Price */}
-                        <p className="text-white mb-2">quantity: {quantity}</p> {/* Price */}
+                        <h1 className="text-4xl font-bold text-yellow-400 font-serif mb-4">{name}</h1> 
+                        <p className=" mb-2 text-white">Category: {category}</p> 
+                        <p className="text-white mb-2">Price: ${price}</p> 
+                        <p className="text-white mb-2">quantity: {quantity}</p> 
                         
-                        <p className="text-white mb-2">Made By: {username}</p> {/* Who added the food */}
-                        <p className="text-white mb-2">Origin: {origin}</p> {/* Origin */}
-                        <p className="text-white mb-4">{description}</p> {/* Description */}
-                        <p className="text-white mb-4">{_id}</p> {/* Description */}
+                        <p className="text-white mb-2">Made By: {username}</p> 
+                        <p className="text-white mb-2">Origin: {origin}</p> 
+                        <p className="text-white mb-4">{description}</p>
+                        {/* <p className="text-white mb-4">{_id}</p>  */}
                         
                         
                        <Link to={`/food-purchase/${_id}`}>
