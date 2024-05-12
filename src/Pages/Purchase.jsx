@@ -41,9 +41,28 @@ const Purchase = () => {
     </div>; 
     }
 
+    // const handleInputChange = event => {
+    //     const { name, value } = event.target;
+    //     setFormData({ ...formData, [name]: value });
+    // };
+    const [exceedsQuantity, setExceedsQuantity] = useState(false);
+
     const handleInputChange = event => {
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
+        if (name === 'quantity') {
+            if (parseInt(value) <= 0 || isNaN(parseInt(value))) {
+                setFormData({ ...formData, [name]: 1 });
+            } else {
+                setFormData({ ...formData, [name]: parseInt(value) });
+            }
+            if (parseInt(value) > loadedFood.quantity) {
+                setExceedsQuantity(true);
+            } else {
+                setExceedsQuantity(false);
+            }
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
     };
 
     const handleSubmit = event => {
@@ -80,7 +99,7 @@ const Purchase = () => {
     return (
         <div>
             <Helmet>
-                <title>Purchase Food</title>
+                <title> Dish & Dine || Purchase Food</title>
             </Helmet>
             <div className="container mx-auto bg-yellow-400">
                 <h1 className="text-3xl font-bold text-center mb-4 text-black font-serif pt-10">Purchase Food</h1>
@@ -119,7 +138,8 @@ const Purchase = () => {
                         <label htmlFor="buyingDate" className="block text-sm font-medium text-gray-700">Buying Date</label>
                         <input type="text" id="buyingDate" name="buyingDate" value={formData.buyingDate} className="mt-1 p-2 w-full border rounded-md focus:outline-none" readOnly />
                     </div>
-                    <button type="submit" className="bg-black text-white py-2 px-4 rounded-md w-full hover:bg-yellow-600 focus:outline-none focus:bg-blue-600 mb-10">Purchase</button>
+                    {/* <button type="submit" className="bg-black text-white py-2 px-4 rounded-md w-full hover:bg-yellow-600 focus:outline-none focus:bg-blue-600 mb-10">Purchase</button> */}
+                    <button type="submit" disabled={exceedsQuantity} className={`bg-black mb-10 text-white py-2 px-4 rounded-md w-full ${exceedsQuantity ? 'cursor-not-allowed opacity-50' : 'hover:bg-yellow-600 focus:outline-none focus:bg-blue-600'}`}>Purchase</button>
                 </form>
             </div>
         </div>
