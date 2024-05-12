@@ -9,7 +9,7 @@ const Chef = () => {
         <h2 className="text-4xl md:text-5xl text-yellow-400 font-bold mb-5 font-serif">Our Chefs</h2>
         <p className="text-gray-700 text-sm md:text-lg lg:text-base xl:text-lg  mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2"> Our team of talented chefs, led by Executive Chef Marco Rossi, brings a wealth of culinary expertise and passion to every dish, ensuring an unforgettable dining experience</p>
     </div>
-            <div className=" ml-28 mr-28  grid lg:grid-cols-5 gap-4">
+            <div className=" ml-4 mr-4  grid lg:grid-cols-5 gap-4">
                 <div>
                     <div className="max-w-sm rounded overflow-hidden shadow-lg">
                     <div className="relative">

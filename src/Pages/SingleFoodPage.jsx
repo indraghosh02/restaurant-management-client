@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import FoodPurchase from "./FoodPurchase";
 
 
 const SingleFoodPage = () => {
@@ -9,7 +10,7 @@ const SingleFoodPage = () => {
     if (!food) {
         return <p>Art not found</p>;
     }
-    const { name, image, category, price,  username, origin, description } = food;
+    const {_id, name, image, category, price,  username, origin, description, quantity } = food;
     return (
        
     
@@ -30,14 +31,20 @@ const SingleFoodPage = () => {
                         <h1 className="text-4xl font-bold text-yellow-400 font-serif mb-4">{name}</h1> {/* Food name */}
                         <p className=" mb-2 text-white">Category: {category}</p> {/* Category */}
                         <p className="text-white mb-2">Price: ${price}</p> {/* Price */}
+                        <p className="text-white mb-2">quantity: {quantity}</p> {/* Price */}
                         
                         <p className="text-white mb-2">Made By: {username}</p> {/* Who added the food */}
                         <p className="text-white mb-2">Origin: {origin}</p> {/* Origin */}
                         <p className="text-white mb-4">{description}</p> {/* Description */}
+                        <p className="text-white mb-4">{_id}</p> {/* Description */}
                         
-                        <button className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Purchase button */}
+                        
+                       <Link to={`/food-purchase/${_id}`}>
+                       <button className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200"> {/* Purchase button */}
                             Purchase
                         </button>
+                        
+                       </Link>
                     </div>
                 </div>
             </div>

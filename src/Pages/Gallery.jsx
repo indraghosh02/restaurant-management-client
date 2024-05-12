@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Modal from "../Components/Modal";
 import ImageCard from "../Components/ImageCard";
+import { AuthContext } from "../providers/AuthProvider";
+
+
 
 
 const Gallery = () => {
+    const { user } = useContext(AuthContext)
+    
     // const foods = useLoaderData();
     const images = useLoaderData()
+
+   
     console.log(images);
+
+    
+    
    
     return (
         <div>
@@ -20,9 +30,36 @@ const Gallery = () => {
         <h1 className="text-black text-6xl font-bold font-serif">Photo Gallery</h1>
     </div>
 
+   {/* <div>
+
+
+    
+   {
+        user? 
+        (
+            <div className="flex items-center justify-center mt-10 mb-10">
+            <button className="btn bg-yellow-400 text-black font-bold" onClick={() => document.getElementById('my_modal_1').showModal()}>Add Feedback & Image
+            
+            
+            </button>
+            </div>
+        )
+        :
+        (
+           <Link to="/login">
+                <div className="flex items-center justify-center mt-10 mb-10">
+<button className="btn bg-yellow-400 text-black font-bold">Add Feedback & Image</button>
+</div>
+           </Link>
+      
+        )
+    }
+   </div> */}
+
 <div className="flex items-center justify-center mt-10 mb-10">
 <button className="btn bg-yellow-400 text-black font-bold" onClick={() => document.getElementById('my_modal_1').showModal()}>Add Feedback & Image</button>
 </div>
+
 
 
 {/* image cards */}
@@ -40,6 +77,7 @@ const Gallery = () => {
 
 <dialog id="my_modal_1" className="modal">
  <Modal></Modal>
+
 </dialog>
           
         </div>
