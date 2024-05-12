@@ -14,6 +14,7 @@ import PrivateRoute from "../Components/PrivateRoute";
 import Modal from "../Components/Modal";
 import FoodPurchase from "../Pages/FoodPurchase";
 import Purchase from "../Pages/Purchase";
+import MyPurchasePage from "../Pages/MyPurchasePage ";
 
 const router = createBrowserRouter([
     {
@@ -74,6 +75,11 @@ const router = createBrowserRouter([
   loader: ({ params }) =>  fetch(`http://localhost:5000/purchase/${params.id}`)
  
 },
+{
+  path: "/my-purchase",
+  element: <PrivateRoute> <MyPurchasePage></MyPurchasePage> </PrivateRoute>,
+},
+
 
       ]
     },

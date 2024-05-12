@@ -11,6 +11,7 @@ const Purchase = () => {
     const [formData, setFormData] = useState({
         foodName: '',
         price: '',
+        image:'',
         quantity: '',
         buyerName: '',
         buyerEmail: '',
@@ -24,7 +25,8 @@ const Purchase = () => {
                 buyerName: user.displayName,
                 buyerEmail: user.email,
                 foodName: loadedFood.name, 
-                price: loadedFood.price
+                price: loadedFood.price,
+                image: loadedFood.image
             }));
         }
     }, [user, loadedFood]);
@@ -96,6 +98,10 @@ const Purchase = () => {
                             <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Quantity</label>
                             <input type="number" id="quantity" name="quantity" value={formData.quantity} onChange={handleInputChange} className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                         </div>
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="foodName" className="block text-sm font-medium text-gray-700">Image Url</label>
+                        <input type="text" id="image" name="image" value={loadedFood.image} onChange={handleInputChange} className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="buyerName" className="block text-sm font-medium text-gray-700">Buyer Name</label>

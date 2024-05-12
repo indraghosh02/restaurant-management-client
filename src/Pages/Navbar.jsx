@@ -67,7 +67,7 @@ const { user, logOut } = useContext(AuthContext)
     <Link to='/add-food'>Add a Food Item</Link>
   </li>
   <li>
-    <Link to='/my-ordered-food'>My Ordered food item</Link>
+    <Link to='/my-purchase'>My Ordered food item</Link>
   </li>
  
 </ul>
