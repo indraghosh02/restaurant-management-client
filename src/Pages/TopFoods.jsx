@@ -5,7 +5,7 @@ const TopFoods = () => {
     const [topFoods, setTopFoods] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/topfoods')
+        fetch('https://resturent-management-server.vercel.app/topfoods')
             .then(response => response.json())
             .then(data => {
                 setTopFoods(data);

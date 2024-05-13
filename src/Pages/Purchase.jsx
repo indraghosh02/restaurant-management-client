@@ -69,7 +69,7 @@ const Purchase = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://resturent-management-server.vercel.app/purchase', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -39,7 +39,7 @@ const FoodPurchase = ({ food }) => {
             buyingDate
         };
         // Send the purchase request to the server
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://resturent-management-server.vercel.app/purchase', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

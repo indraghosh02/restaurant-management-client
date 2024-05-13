@@ -16,6 +16,7 @@ const Gallery = () => {
 
    
     console.log(images);
+    
 
     
     
@@ -30,7 +31,7 @@ const Gallery = () => {
         <h1 className="text-black text-6xl font-bold font-serif">Photo Gallery</h1>
     </div>
 
-   {/* <div>
+   <div>
 
 
     
@@ -54,11 +55,11 @@ const Gallery = () => {
       
         )
     }
-   </div> */}
+   </div>
 
-<div className="flex items-center justify-center mt-10 mb-10">
+{/* <div className="flex items-center justify-center mt-10 mb-10">
 <button className="btn bg-yellow-400 text-black font-bold" onClick={() => document.getElementById('my_modal_1').showModal()}>Add Feedback & Image</button>
-</div>
+</div> */}
 
 
 

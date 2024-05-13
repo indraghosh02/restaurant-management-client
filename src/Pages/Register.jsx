@@ -35,7 +35,7 @@ const Register = () => {
           //2. User Registration
           const result = await createUser(email, pass)
           const user = {email, name};
-          fetch('http://localhost:5000/user',{
+          fetch('https://resturent-management-server.vercel.app/user',{
             method: 'POST',
             headers: {
               'content-type': 'application/json'

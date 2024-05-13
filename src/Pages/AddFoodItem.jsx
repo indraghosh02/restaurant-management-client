@@ -29,7 +29,7 @@
 //         console.log(newFood);
 
 //         //send data to server
-//         fetch('http://localhost:5000/food',{
+//         fetch('https://resturent-management-server.vercel.app/food',{
 //             method: 'POST',
 //             headers: {
 //                 'content-type': 'application/json'
@@ -216,6 +216,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
 
 const AddFoodItem = () => {
     const { user } = useContext(AuthContext);
@@ -250,7 +251,7 @@ const AddFoodItem = () => {
         };
 
         //send data to server
-        fetch('http://localhost:5000/food', {
+        fetch('https://resturent-management-server.vercel.app/food', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -273,6 +274,10 @@ const AddFoodItem = () => {
 
     return (
         <div>
+             <Helmet>
+          
+          <title>Dish & Dine | Add Food  </title>
+    </Helmet>
             <div className="bg-gradient-to-r from-yellow-400 to-slate-500 p-24  ">
                 <h3 className='text-4xl text-center text-black font-bold mb-4 font-serif'> Add Food Items</h3>
                 <form onSubmit={handleAddFood}>

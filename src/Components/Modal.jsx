@@ -23,7 +23,7 @@ const Modal = () => {
         console.log(newImage);
 
         // send data to server
-        fetch('http://localhost:5000/image',{
+        fetch('https://resturent-management-server.vercel.app/image',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

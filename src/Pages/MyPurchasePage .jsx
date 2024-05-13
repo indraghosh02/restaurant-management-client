@@ -14,7 +14,7 @@ const MyPurchasePage = () => {
 
     // useEffect(() => {
     //     if (user) {
-            // fetch(`http://localhost:5000/my-purchases?email=${user.email}`, {credentials:'include'})
+            // fetch(`https://resturent-management-server.vercel.app/my-purchases?email=${user.email}`, {credentials:'include'})
             // fetch(`/my-purchases?email=${user.email}`, {credentials:'include'})
            
                 // .then(res => res.json())
@@ -29,7 +29,7 @@ const MyPurchasePage = () => {
 
     useEffect(() => {
       if (user) {
-          fetch(`http://localhost:5000/my-purchases?email=${user.email}`)
+          fetch(`https://resturent-management-server.vercel.app/my-purchases?email=${user.email}`)
               .then(res => res.json())
               .then(data => setPurchasedFoods(data))
               .catch(error => console.error('Error fetching purchased foods:', error));
@@ -49,7 +49,7 @@ const MyPurchasePage = () => {
           cancelButtonText: "No, keep it",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/my-purchases/${_id}`, {
+            fetch(`https://resturent-management-server.vercel.app/my-purchases/${_id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())

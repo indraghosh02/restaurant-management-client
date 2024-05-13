@@ -29,18 +29,18 @@ const router = createBrowserRouter([
         {
             path: "/all-foods",
             element:<AllFoods></AllFoods>,
-            loader: () => fetch('http://localhost:5000/food')
+            loader: () => fetch('https://resturent-management-server.vercel.app/food')
         },
          {
          path: "/single-food/:id", 
           element: <SingleFoodPage></SingleFoodPage>, 
-          loader: ({ params }) =>  fetch(`http://localhost:5000/food/${params.id}`)
+          loader: ({ params }) =>  fetch(`https://resturent-management-server.vercel.app/food/${params.id}`)
              
            },
         {
             path: "/gallery",
             element:  <Gallery></Gallery>,
-            loader: () => fetch('http://localhost:5000/image')
+            loader: () => fetch('https://resturent-management-server.vercel.app/image')
           
         },
         {
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
 {
   path: "/update-food/:id",
   element: <UpdateFood></UpdateFood>,
-  loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
+  loader: ({params}) => fetch(`https://resturent-management-server.vercel.app/food/${params.id}`)
 },
 // {
 //   path: "/gallery",
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
 
   path: "/food-purchase/:id",
   element: <PrivateRoute> <Purchase></Purchase> </PrivateRoute>,
-  loader: ({ params }) =>  fetch(`http://localhost:5000/food/${params.id}`)
+  loader: ({ params }) =>  fetch(`https://resturent-management-server.vercel.app/food/${params.id}`)
  
 },
 {

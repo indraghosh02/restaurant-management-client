@@ -14,7 +14,7 @@ const AllFoods = () => {
 
     useEffect(() => {
         const fetchFoods = async () => {
-            let url = "http://localhost:5000/food";
+            let url = "https://resturent-management-server.vercel.app/food";
 
             if (searchTerm) { 
                 url += `?name=${encodeURIComponent(searchTerm)}`;

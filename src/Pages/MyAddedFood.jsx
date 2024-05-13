@@ -14,7 +14,7 @@ const MyAddedFood = () => {
   useEffect(() => {
     const fetchMyFoodItems = async () => {
       if (user?.email) {
-        const response = await fetch(`http://localhost:5000/food?email=${encodeURIComponent(user.email)}`);
+        const response = await fetch(`https://resturent-management-server.vercel.app/food?email=${encodeURIComponent(user.email)}`);
         const data = await response.json();
         setMyFoodItems(data); // Store fetched food items
       }
@@ -26,7 +26,7 @@ const MyAddedFood = () => {
   return (
     <div>
       <Helmet>
-        <title>My Food Items</title>
+        <title> Dish & Din | My  added Food Items</title>
       </Helmet>
 
       <div className="w-full h-32 bg-gradient-to-r from-black to-yellow-400 flex items-center justify-center">
