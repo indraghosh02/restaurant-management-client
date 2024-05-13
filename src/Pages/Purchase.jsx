@@ -1,13 +1,14 @@
 import { useContext, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../providers/AuthProvider';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const loadedFood = useLoaderData();
     console.log(loadedFood);
     const { user, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         foodName: '',
@@ -47,6 +48,7 @@ const Purchase = () => {
     // };
     const [exceedsQuantity, setExceedsQuantity] = useState(false);
 
+
     const handleInputChange = event => {
         const { name, value } = event.target;
         if (name === 'quantity') {
@@ -84,7 +86,8 @@ const Purchase = () => {
         console.log('inside post response', data);
         if (data.insertedId) {
             toast.success("Food Item Added Successfully");
-            // navigate('/userfoods');
+            navigate('/my-purchase');
+           
         }
     })
     .catch(error => {
@@ -139,7 +142,7 @@ const Purchase = () => {
                         <input type="text" id="buyingDate" name="buyingDate" value={formData.buyingDate} className="mt-1 p-2 w-full border rounded-md focus:outline-none" readOnly />
                     </div>
                     {/* <button type="submit" className="bg-black text-white py-2 px-4 rounded-md w-full hover:bg-yellow-600 focus:outline-none focus:bg-blue-600 mb-10">Purchase</button> */}
-                    <button type="submit" disabled={exceedsQuantity} className={`bg-black mb-10 text-white py-2 px-4 rounded-md w-full ${exceedsQuantity ? 'cursor-not-allowed opacity-50' : 'hover:bg-yellow-600 focus:outline-none focus:bg-blue-600'}`}>Purchase</button>
+                    <button type="submit" disabled={exceedsQuantity } className={`bg-black mb-10 text-white py-2 px-4 rounded-md w-full ${exceedsQuantity ? 'cursor-not-allowed opacity-50' : 'hover:bg-yellow-600 focus:outline-none focus:bg-blue-600'}`}>Purchase</button>
                 </form>
             </div>
         </div>

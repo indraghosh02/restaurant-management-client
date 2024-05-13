@@ -2,18 +2,41 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
+
+//import useAxiosSecure from '../Hook/useAxiosSecure'; //new
+
+
 const MyPurchasePage = () => {
     const { user } = useContext(AuthContext);
     const [purchasedFoods, setPurchasedFoods] = useState([]);
+    
+    //const axiosSecure = useAxiosSecure(); //new
+
+    // useEffect(() => {
+    //     if (user) {
+            // fetch(`http://localhost:5000/my-purchases?email=${user.email}`, {credentials:'include'})
+            // fetch(`/my-purchases?email=${user.email}`, {credentials:'include'})
+           
+                // .then(res => res.json())
+                // .then(data => setPurchasedFoods(data))
+                // .catch(error => console.error('Error fetching purchased foods:', error));
+
+    //             axiosSecure.get(`/my-purchases?email=${user.email}`)
+    //             .then(res=> setPurchasedFoods(res.data))
+    //     }
+    // }, [user, axiosSecure]);
+
 
     useEffect(() => {
-        if (user) {
-            fetch(`http://localhost:5000/my-purchases?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setPurchasedFoods(data))
-                .catch(error => console.error('Error fetching purchased foods:', error));
-        }
-    }, [user]);
+      if (user) {
+          fetch(`http://localhost:5000/my-purchases?email=${user.email}`)
+              .then(res => res.json())
+              .then(data => setPurchasedFoods(data))
+              .catch(error => console.error('Error fetching purchased foods:', error));
+      }
+  }, [user]);
+
+
 
     const handleDelete = _id => {
         console.log(_id);

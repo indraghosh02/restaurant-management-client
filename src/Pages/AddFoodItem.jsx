@@ -231,7 +231,7 @@ const AddFoodItem = () => {
         const origin = form.origin.value;
         const description = form.description.value;
         const price = form.price.value;
-        const quantity = +form.quantity.value;
+        const quantity = parseInt(form.quantity.value);
         const username = form.username.value;
         const email = form.email.value;
         const count = 0; // Set count to 0
