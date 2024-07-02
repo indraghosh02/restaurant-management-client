@@ -21,5 +21,9 @@ This project is an online food marketplace designed to enhance user experience a
 - React Router
 - Tailwind CSS
 - Firebase
-#
+# To locally run
+
+  - Clone the Repository: Provides the command to clone the repository using Git.
+  - Install Dependencies: Uses npm install to install all necessary dependencies for the project.
+  - Run the Project: Executes npm run dev to start the project in development mode.
 
