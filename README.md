@@ -3,8 +3,10 @@
 # live link 
 [Dish & Dine ](https://restaurant-management-55f52.web.app/)
 
-# Assignment_category_0005
-# Features
+# Website overview
+This project is an online food marketplace designed to enhance user experience and community engagement. It features intuitive navigation with a top navbar and banners highlighting top-purchased foods, restaurant details, and chef information. Detailed dish information, including ingredients, price, and availability, is easily accessible with a click. Secure user authentication ensures only registered users can make purchases, with safeguards preventing users from buying more than available quantities or their own listed foods. Registered users can manage their purchases on a dedicated page and contribute by adding or updating food items. An interactive gallery allows community members to share images and feedback, fostering interaction and community building. This platform addresses the need for convenient, secure, and engaging online food shopping experiences while promoting community participation and feedback in restaurant choices.
+
+# Best 3 Features
 
 1.  Intuitive navigation with a top navbar and banners showcasing top-purchased foods, restaurant details, and chef information 
 2. Clicking on a details button on food card reveals detailed information about the dish, including ingredients, price, and available quantity, with a convenient purchase button.
